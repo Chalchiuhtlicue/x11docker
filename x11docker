@@ -1656,7 +1656,7 @@ while rocknroll ; do
     env DISPLAY=$Newdisplay XAUTHORITY=$Xclientcookie $Clipsend <<<  \"\$Shareclip\" 
 #    echo \"\$Shareclip\" | env DISPLAY=$Newdisplay XAUTHORITY=$Xclientcookie $Clipsend
   }
-  Shareclip=\"\${Shareclip:-' '}\"     # avoid empty string error
+  # Shareclip=\"\${Shareclip:-' '}\"     # avoid empty string error
   mysleep 0.3                       # sleep a bit to avoid high cpu usage
     
   # read content of clipboard of second X server $Newdisplay
@@ -1668,7 +1668,7 @@ while rocknroll ; do
     env DISPLAY=$Hostdisplay XAUTHORITY=$Hostxauthority $Clipsend <<<  \"\$Shareclip\" 
 #    echo \"\$Shareclip\" | env DISPLAY=$Hostdisplay XAUTHORITY=$Hostxauthority $Clipsend
   }
-  Shareclip=\"\${Shareclip:-' '}\"     # avoid empty string error
+  # Shareclip=\"\${Shareclip:-' '}\"     # avoid empty string error
   mysleep 0.3                       # sleep a bit to avoid high cpu usage
 done
 " >> $Clipboardrc
@@ -7673,7 +7673,7 @@ option_messages() {             # some messages depending on options, but not ch
   # --user=RETAIN / keep container defined in image
   case $Createcontaineruser in
     no)
-      [ "$Sudouser" = "yes" || "$Sudouser" = "nopasswd" ] && note "Option --sudouser has limited support with --user=RETAIN.
+      [ "$Sudouser" = "yes" ] || [ "$Sudouser" = "nopasswd" ] && note "Option --sudouser has limited support with --user=RETAIN.
   x11docker will only set needed capabilities. 
   User setup and /etc/sudoers won't be touched.
   Option --group-add=sudo might be useful."
